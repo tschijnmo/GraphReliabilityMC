@@ -97,7 +97,7 @@ def compute_reliability(graph, rate, n_samples):
     """
 
     result = [do_one_MC(graph, rate) for i in xrange(0, n_samples)]
-    return len(i for i in result if i) * 1.0 / len(result)
+    return len([i for i in result if i]) * 1.0 / len(result)
 
 
 #
@@ -119,7 +119,7 @@ def main():
                         help='Name of the adjacency matrix in the mat file')
     parser.add_argument('-r', '--rate', default=0.1, type=float,
                         help='The failure rate')
-    parser.add_argument('-s', '--sample', default=300, type=int,
+    parser.add_argument('-s', '--sample', default=2000, type=int,
                         help='The number of sampling in the MC simulation')
     args = parser.parse_args()
 
